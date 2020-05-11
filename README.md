@@ -1,17 +1,25 @@
 # leaning
-Java后端必备知识：https://github.com/ZhongFuCheng3y/3y
+Java后端必备知识：<br>
+	https://github.com/ZhongFuCheng3y/3y
 
-微服务网关Spring Cloud Gateway:
+
+微服务网关Spring Cloud Gateway:<br>
     https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.2.RELEASE/reference/html/
     https://www.cnblogs.com/crazymakercircle/p/11704077.html
 
-Guava缓存篇：https://zhuanlan.zhihu.com/p/44380897    https://ifeve.com/google-guava-cachesexplained
 
-分布式监控Prometheus：
+Guava缓存篇：<br>
+	https://zhuanlan.zhihu.com/p/44380897    
+	https://ifeve.com/google-guava-cachesexplained
+
+
+分布式监控Prometheus：<br>
     https://prometheus.io/
     https://baijiahao.baidu.com/s?id=1634686679128300208&wfr=spider&for=pc
 
-HashCorp Vault: https://www.vaultproject.io/docs/install
+
+HashCorp Vault: <br>
+	https://www.vaultproject.io/docs/install 
     https://blog.csdn.net/peterwanghao/article/details/83410861
     https://blog.csdn.net/peterwanghao/article/details/83181932
     https://cloud.spring.io/spring-cloud-vault/reference/html/#_authentication
