@@ -1,0 +1,10 @@
+安装docker：sudo apt install docker.io
+
+sudo docker images
+
+sudo docker run -d --name jenkins -u root -p 9090:8080 -v /var/jenkins:/var/jenkins jenkins/jenkins
+
+1，–name 是指定生成的容器名称。
+2，最好使用root启动，以免有权限问题而启动失败。
+3，-p是端口的映射，冒号前边是宿主机的端口，冒号后边的是容器的端口。
+4，-v将Jenkins容器的Jenkins_home映射到宿主机的目录中，实现数据持续化。
