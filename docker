@@ -13,6 +13,16 @@ sudo docker run -d --name jenkins -u root -p 8080:8080 -v /var/jenkins:/var/jenk
 查看容器挂载目录：docker inspect jenkins | grep Mounts -A 20
 
 docker run --detach --hostname localhost --publish 443:443 --publish 80:80 --publish 22:22 --name gitlab --restart always --volume $GITLAB_HOME/config:/etc/gitlab --volume $GITLAB_HOME/logs:/var/log/gitlab --volume $GITLAB_HOME/data:/var/opt/gitlab gitlab/gitlab-ce:latest
+docker run --detach --hostname 192.168.1.44:7080 --publish 722:22 --publish 7443:443 --publish 7080:80 --publish 5050:5050 --name gitlab --restart always --volume /srv/gitlab/config:/etc/gitlab --volume /srv/gitlab/logs:/var/log/gitlab --volume /srv/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce:latest
+
+##修改iptables端口映射
+增加Docker端口映射: sudo iptables -t nat -A  DOCKER -p tcp --dport 5005 -j DNAT --to-destination 172.17.0.4:5005
+显示行号查看: sudo iptables -t nat -vnL DOCKER --line-number
+删除规则: sudo iptables -t nat -D DOCKER $line-number
+
+##把运行中的容器生成新的镜像，然后运行新的镜像
+提交一个运行中的容器为镜像: docker commit containerid docker.io/gitlab-cr
+运行gitlab-cr镜像并添加5005映射容器5005端口: docker run -d -p 5005:5005  docker.io/gitlab-cr /bin/bash
 
 docker run -d -p 8081:8081 --name nexus sonatype/nexus3
 
@@ -25,3 +35,5 @@ sonatype/nexus3
 
 删除异常停止的docker容器： docker rm `docker ps -a | grep Exited | awk '{print $1}'`   
 删除名称或标签为none的镜像：docker rmi -f  `docker images | grep '<none>' | awk '{print $3}'`  
+
+docker run -d -p 5000:5000 --restart always --name registry registry:latest
